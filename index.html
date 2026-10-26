@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0E0E0E">
+<meta name="description" content="One-Tap Poster — type a phrase, tap once, get a designer-grade story poster.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>One-Tap Poster</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preload" href="fonts/ArchivoBlack.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><a href="#/create" class="brand" aria-label="One-Tap Poster home"><img src="icons/icon.svg" alt="" width="32" height="32"><span>ONE-TAP<br>POSTER</span></a><span class="badge">TEST BUILD</span><button class="icon-btn" id="btnSettings" aria-label="Settings and about">⚙</button></header>
+<main id="app">
+  <section class="view" id="v-create">
+    <div id="remixNote" class="note" hidden></div>
+    <label class="lbl" for="txt">YOUR PHRASE</label>
+    <textarea id="txt" maxlength="80" rows="3" placeholder="Type something loud…" enterkeyhint="go"></textarea>
+    <div class="count"><span id="cnt">0</span>/80</div>
+    <div class="lbl">STYLE</div>
+    <div class="styles" id="styles" role="radiogroup" aria-label="Design style"></div>
+    <div class="row opts"><div class="lbl">PALETTE</div><div id="pals" class="pals" role="radiogroup" aria-label="Palette"></div></div>
+    <label class="toggle"><input type="checkbox" id="mix" checked><span></span>Shuffle layout</label>
+    <button class="cta" id="btnMake">MAKE POSTER <i>→</i></button>
+  </section>
+
+  <section class="view" id="v-result">
+    <div class="stage"><canvas id="big" width="1080" height="1920" aria-label="Poster preview"></canvas></div>
+    <div class="meta" id="resMeta"></div>
+    <div class="actions">
+      <button class="cta sm" id="btnShare">SHARE <small>TikTok · IG Stories</small></button>
+      <button class="ghost" id="btnSave">SAVE PNG</button>
+      <button class="ghost" id="btnShuffle">↻ SHUFFLE</button>
+      <button class="ghost" id="btnEdit">EDIT / REMIX</button>
+      <button class="ghost" id="btnCopy">COPY LINK</button>
+      <button class="ghost accent" id="btnPost">POST TO FEED</button>
+    </div>
+  </section>
+
+  <section class="view" id="v-feed">
+    <div class="seg" role="tablist"><button role="tab" data-tab="following">Following</button><button role="tab" data-tab="discover">Discover</button></div>
+    <p class="demo-banner">◆ Demo community — fictional creators for this test build</p>
+    <div id="feedGrid" class="grid"></div>
+  </section>
+
+  <section class="view" id="v-post"><div id="postBody"></div></section>
+
+  <section class="view" id="v-challenge"><div id="chBody"></div></section>
+
+  <section class="view" id="v-profile"><div id="profBody"></div></section>
+</main>
+<nav class="tabs" aria-label="Main">
+  <a href="#/create" data-r="create"><b>✚</b>Create</a><a href="#/feed" data-r="feed"><b>▦</b>Feed</a><a href="#/challenge" data-r="challenge"><b>★</b>Challenge</a><a href="#/profile" data-r="profile"><b>●</b>Profile</a>
+</nav>
+<dialog id="dlg"><form method="dialog" id="dlgBody"></form></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="poster.js"></script>
+<script src="api.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
